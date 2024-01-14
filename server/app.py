@@ -1,10 +1,14 @@
-from flask import send_from_directory
-from server import app  # Assuming your Flask app is named 'app'
+from flask import Flask
+from flask_restful import Api, Resource
 
-@app.route('/')
-def index():
-    return send_from_directory('client/build', 'index.html')
+app = Flask(__name__)
+api = Api(app)  
 
-@app.route('/static/<path:path>')
-def send_static(path):
-    return send_from_directory('client/build/static', path)
+class HelloWorld(Resource):
+    def get(self):
+        return 'hello world!'
+    
+api.add_resource(HelloWorld, "/hello_world")
+
+if __name__ == '__main__':
+    app.run(port=5555, debug=False)
