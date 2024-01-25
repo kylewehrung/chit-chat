@@ -1,9 +1,5 @@
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://user:password@localhost/dbname'
-db = SQLAlchemy(app)
+from config import db
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -14,4 +10,3 @@ class User(db.Model):
     def __repr__(self):
         return '<User %r>' % self.username
 
-db.create_all()
