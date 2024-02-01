@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-chitchatclient-dev-131422-authRole",
+      "UnauthRoleArn": "arn:aws:iam::560384637585:role/amplify-chitchatclient-dev-131422-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::560384637585:role/amplify-chitchatclient-dev-131422-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-chitchatclient-dev-131422-deployment",
+      "UnauthRoleName": "amplify-chitchatclient-dev-131422-unauthRole",
+      "StackName": "amplify-chitchatclient-dev-131422",
+      "StackId": "arn:aws:cloudformation:us-east-1:560384637585:stack/amplify-chitchatclient-dev-131422/292b5590-bfac-11ee-803e-0e98ec1e4005",
+      "AmplifyAppId": "d3n55najuoli4u"
+    }
+  }
+}
