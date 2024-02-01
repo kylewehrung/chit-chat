@@ -1,14 +1,17 @@
 version: 1
 frontend:
-  phases:
+ phases:
     preBuild:
       commands:
-        - npm install --prefix client
+        - cd client
+        - npm ci
     build:
       commands:
-        - npm run-script build --prefix client
-  artifacts:
-    baseDirectory: client/build
+        - npm run build
+ artifacts:
+    baseDirectory: build
     files:
       - '**/*'
-      
+ cache:
+    paths:
+      - node_modules/**/*
