@@ -6,12 +6,13 @@ frontend:
         - npm install --prefix client
     build:
       commands:
+        - npm run lint --prefix client  # Run linting
+        - npm run test --prefix client  # Run tests
         - npm run build --prefix client
   artifacts:
     baseDirectory: client/build
     files:
       - '**/*'
-
-
-
-      
+  cache:
+    paths:
+      - node_modules/**/*   # Cache node_modules to speed up builds
