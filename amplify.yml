@@ -3,11 +3,11 @@ frontend:
  phases:
     preBuild:
       commands:
-        # - cd client
+        - cd client
         - npm ci
     build:
       commands:
-        - npm run build
+        - npm run-scripts build
  artifacts:
     baseDirectory: build
     files:
