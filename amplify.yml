@@ -3,10 +3,14 @@ frontend:
  phases:
     preBuild:
       commands:
+        - echo "Starting preBuild phase..."
         - cd client
         - npm ci
+        - echo "Printing package.json contents:"
+        - cat package.json
     build:
       commands:
+        - echo "Starting build phase..."
         - npm run build
  artifacts:
     baseDirectory: build
