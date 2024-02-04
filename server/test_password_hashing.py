@@ -1,6 +1,6 @@
 from flask import Flask
-from config import db, app
-from models import User
+from server.config import db, app
+from server.models import User
 
 # Create application context
 with app.app_context():

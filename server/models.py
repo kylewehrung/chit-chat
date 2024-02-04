@@ -1,5 +1,5 @@
 from flask import Flask
-from config import db
+from .config import db
 from sqlalchemy.ext.declarative import declarative_base
 from werkzeug.security import generate_password_hash, check_password_hash
 
