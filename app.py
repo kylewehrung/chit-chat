@@ -3,6 +3,7 @@ from flask_restful import Api, Resource
 from config import app, api, db
 from models import User
 from flask_cors import CORS
+import os
 
 
 CORS(app)
@@ -74,4 +75,5 @@ api.add_resource(CheckSession, '/check_session')
 api.init_app(app)
 
 if __name__ == '__main__':
-    app.run(port=5555, debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
