@@ -13,7 +13,6 @@ function App() {
 
  return (
    <div className>
-     {/* <p>Hello</p> */}
      <p>{data}</p>
    </div>
  );
