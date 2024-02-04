@@ -112,6 +112,13 @@ gunicorn -w 4 -b 0.0.0.0:5555 app:app
 ```
 
 
+### Check heroku logs:
+
+```
+ heroku logs --tail --app chit-chat-backend
+ ```
+
+
 
 ### Setting up awscli version 2 to be used over version 1:
 ```export PATH="/usr/local/bin:$HOME/Development/code/bag-talk/chit-chat:$PATH"
