@@ -5,7 +5,7 @@ function App() {
  const [data, setData] = useState("");
 
  useEffect(() => {
-   fetch('/hello_world')
+   fetch('https://chit-chat-backend-98277c5b9aba.herokuapp.com/hello_world')
    .then(response => response.text())
    .then(data => setData(data))
    .catch(error => console.error('Error!', error));
