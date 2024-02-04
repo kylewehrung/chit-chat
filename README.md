@@ -24,7 +24,7 @@ npm start
 
 ### Installing Dependencies
 
-Change to the Server directory and run:
+From the chit-chat project directory run:
 
 ```bash
 pip install -r requirements.txt
@@ -51,7 +51,7 @@ pip uninstall package-name
 ```
 
 ### PostgreSQL Setup
-
+Change to the server directory:
 Check if the PostgreSQL server is online by running:
 
 ```bash
