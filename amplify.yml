@@ -1,6 +1,6 @@
 version: 1
 frontend:
- phases:
+  phases:
     preBuild:
       commands:
         - echo "Starting preBuild phase..."
@@ -12,10 +12,11 @@ frontend:
       commands:
         - echo "Starting build phase..."
         - npm run build
- artifacts:
-    baseDirectory: build
+  artifacts:
+    # Ensure that Amplify is looking for artifacts in the 'build' directory pls
+    baseDirectory: client/build
     files:
       - '**/*'
- cache:
-    paths:
-      - node_modules/**/*
+cache:
+  paths:
+    - node_modules/**/*
