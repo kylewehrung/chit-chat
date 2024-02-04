@@ -112,14 +112,34 @@ gunicorn -w 4 -b 0.0.0.0:5555 app:app
 ```
 
 
-### Check heroku logs:
 
-```
+### Heroku commands:
+
+Check heroku logs:
+
+```bash
  heroku logs --tail --app chit-chat-backend
  ```
+
+ Scale/run dyno:
+
+ ```bash
+ heroku ps:scale web=1 --app chit-chat-backend
+ ```
+
+Restart Dyno:
+
+```bash
+heroku ps:restart --app chit-chat-backend
+```
+
+
+
 
 
 
 ### Setting up awscli version 2 to be used over version 1:
-```export PATH="/usr/local/bin:$HOME/Development/code/bag-talk/chit-chat:$PATH"
+
+```bash
+export PATH="/usr/local/bin:$HOME/Development/code/bag-talk/chit-chat:$PATH"
 ```
