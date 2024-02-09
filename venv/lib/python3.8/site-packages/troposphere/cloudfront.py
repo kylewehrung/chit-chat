@@ -587,6 +587,16 @@ class Distribution(AWSObject):
     }
 
 
+class KeyValueStoreAssociation(AWSProperty):
+    """
+    `KeyValueStoreAssociation <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-function-keyvaluestoreassociation.html>`__
+    """
+
+    props: PropsDictType = {
+        "KeyValueStoreARN": (str, True),
+    }
+
+
 class FunctionConfig(AWSProperty):
     """
     `FunctionConfig <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-function-functionconfig.html>`__
@@ -594,6 +604,7 @@ class FunctionConfig(AWSProperty):
 
     props: PropsDictType = {
         "Comment": (str, True),
+        "KeyValueStoreAssociations": ([KeyValueStoreAssociation], False),
         "Runtime": (str, True),
     }
 
@@ -645,6 +656,31 @@ class KeyGroup(AWSObject):
 
     props: PropsDictType = {
         "KeyGroupConfig": (KeyGroupConfig, True),
+    }
+
+
+class ImportSource(AWSProperty):
+    """
+    `ImportSource <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-keyvaluestore-importsource.html>`__
+    """
+
+    props: PropsDictType = {
+        "SourceArn": (str, True),
+        "SourceType": (str, True),
+    }
+
+
+class KeyValueStore(AWSObject):
+    """
+    `KeyValueStore <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-keyvaluestore.html>`__
+    """
+
+    resource_type = "AWS::CloudFront::KeyValueStore"
+
+    props: PropsDictType = {
+        "Comment": (str, False),
+        "ImportSource": (ImportSource, False),
+        "Name": (str, True),
     }
 
 
