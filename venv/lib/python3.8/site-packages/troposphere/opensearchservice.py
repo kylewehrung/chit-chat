@@ -65,6 +65,16 @@ class AdvancedSecurityOptionsInput(AWSProperty):
     }
 
 
+class ColdStorageOptions(AWSProperty):
+    """
+    `ColdStorageOptions <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-opensearchservice-domain-coldstorageoptions.html>`__
+    """
+
+    props: PropsDictType = {
+        "Enabled": (boolean, False),
+    }
+
+
 class ZoneAwarenessConfig(AWSProperty):
     """
     `ZoneAwarenessConfig <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-opensearchservice-domain-zoneawarenessconfig.html>`__
@@ -81,6 +91,7 @@ class ClusterConfig(AWSProperty):
     """
 
     props: PropsDictType = {
+        "ColdStorageOptions": (ColdStorageOptions, False),
         "DedicatedMasterCount": (integer, False),
         "DedicatedMasterEnabled": (boolean, False),
         "DedicatedMasterType": (str, False),
@@ -249,6 +260,7 @@ class Domain(AWSObject):
         "EBSOptions": (EBSOptions, False),
         "EncryptionAtRestOptions": (EncryptionAtRestOptions, False),
         "EngineVersion": (validate_search_service_engine_version, False),
+        "IPAddressType": (str, False),
         "LogPublishingOptions": (dict, False),
         "NodeToNodeEncryptionOptions": (NodeToNodeEncryptionOptions, False),
         "OffPeakWindowOptions": (OffPeakWindowOptions, False),
