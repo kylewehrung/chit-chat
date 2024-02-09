@@ -127,7 +127,13 @@ Check heroku logs:
  heroku ps:scale web=1 --app chit-chat-backend
  ```
 
-Restart Dyno:
+Stop dyno
+
+```bash
+heroku ps:scale web=0 --app chit-chat-backend
+```
+
+Restart dyno:
 
 ```bash
 heroku ps:restart --app chit-chat-backend
