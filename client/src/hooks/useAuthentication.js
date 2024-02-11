@@ -74,6 +74,7 @@ const useAuthentication = () => {
     //Call checkSession on first render:
     useEffect(() => {
         checkSession();
+        console.log("hello?")
     }, []);
 
 
