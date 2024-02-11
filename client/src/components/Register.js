@@ -4,14 +4,18 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import useAuthentication from '../hooks/useAuthentication';
 
-// Define the initial values for the form fields
+
+//Basic Register.js, haven't been able to check if it works yet
+
+
+// Initial values for the form fields
 const initialValues = {
   username: '',
   email: '',
   password: ''
 };
 
-// Define the validation schema using Yup
+// Define the validation schema 
 const validationSchema = Yup.object().shape({
   username: Yup.string().required('Required'),
   email: Yup.string().email('Invalid email').required('Required'),
@@ -19,16 +23,14 @@ const validationSchema = Yup.object().shape({
 });
 
 const Register = () => {
-  // Call the useAuthentication hook at the top level of the component
+  // Call the useAuthentication hook 
   const { register } = useAuthentication();
 
   // Define the submit handler for the form
   const onSubmit = async (values, { setSubmitting, setErrors }) => {
     try {
       await register(values.username, values.email, values.password);
-      // Handle successful registration, e.g., navigate to homepage
     } catch (error) {
-      // Set Formik errors based on the error message
       setErrors({ submit: error.message });
     } finally {
       setSubmitting(false);

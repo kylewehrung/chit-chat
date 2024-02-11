@@ -1,10 +1,9 @@
-// src/components/App.js
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import useAuthentication from '../hooks/useAuthentication';
 import Register from './Register';
-// import Login from './Login'; 
-// import HomePage from './HomePage'; 
+import Login from './Login'; 
+import HomePage from './HomePage'; 
 
 function App() {
   const { loading, error } = useAuthentication();
@@ -18,15 +17,12 @@ function App() {
   }
 
   return (
-    <Router>
+    <Router> 
       <Switch>
         <Route path="/register" component={Register} />
-        {/* <Route path="/login" component={Login} /> */}
-       
-          {/* <Route path="/" component={HomePage} /> */}
-        
-          <Redirect to="/login" />
-        
+        <Route path="/login" component={Login} />
+        <Route path="/" component={HomePage} />
+        <Redirect to="/login" />
       </Switch>
     </Router>
   );
