@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 import useAuthentication from '../hooks/useAuthentication';
 
 
-//Basic Register.js, haven't been able to check if it works yet
+//Basic Register.js, shows up, unable to submit
 
 
 // Initial values for the form fields
