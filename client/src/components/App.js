@@ -1,21 +1,35 @@
-import React, { useState, useEffect } from 'react';
-import '../App.css';
+// src/components/App.js
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import useAuthentication from '../hooks/useAuthentication';
+import Register from './Register';
+// import Login from './Login'; 
+// import HomePage from './HomePage'; 
 
 function App() {
- const [data, setData] = useState("");
+  const { loading, error } = useAuthentication();
 
- useEffect(() => {
-   fetch('https://chit-chat-backend-98277c5b9aba.herokuapp.com/hello_world')
-   .then(response => response.text())
-   .then(data => setData(data))
-   .catch(error => console.error('Error!', error));
- }, []);
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
- return (
-   <div className>
-     <p>{data}</p>
-   </div>
- );
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  return (
+    <Router>
+      <Switch>
+        <Route path="/register" component={Register} />
+        {/* <Route path="/login" component={Login} /> */}
+       
+          {/* <Route path="/" component={HomePage} /> */}
+        
+          <Redirect to="/login" />
+        
+      </Switch>
+    </Router>
+  );
 }
 
 export default App;
