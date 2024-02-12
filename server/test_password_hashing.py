@@ -31,5 +31,5 @@ with app.app_context():
     else:
         print("User not found.")
 
-# Close the database session
-db.session.close()
+    # Close the database session within the application context
+    db.session.close()
