@@ -88,6 +88,7 @@ Set up/create environment variables:
 ```bash
 export DB_USERNAME=username
 export DB_PASSWORD=password
+export SQLALCHEMY_URL=postgresql://db-username:db-password@localhost/-db-name
 ```
 
 
@@ -109,8 +110,16 @@ Test password hashing:
 ```bash
  python test_password_hashing.py
  ```
-note: may need to adjust imports to not be relative imports, removing '.' in front of
+Note: May need to adjust imports to not be relative imports, removing '.' in front of
 the imports from other files like models, config etc..
+
+
+Generate Alembic.ini file to run migrations:
+
+```bash
+ python generate_alembic_ini.py
+ ```
+Note: Make sure to remove/add generated alembic.ini file from .gitignore 
 
 
 
@@ -119,36 +128,36 @@ the imports from other files like models, config etc..
 
 ### Checking database list and roles:
 
-    Enter postgres shell:
+Enter postgres shell:
 
     ```bash
     sudo -u postgres psql
     ```
 
-    Check database and roles:
+Check database and roles:
 
     ```bash
     \du
     \l
-```
+    ```
 
-    Check a bunch of stuff:
+Check users table:
 
     ```bash
     SELECT table_name FROM information_schema.tables WHERE table_name = 'users';
     ```
 
-    List tables:
+List tables:
 
     ```bash
     psql -U db-username -d db-name -h localhost -W
     ```
-    Enter password for db-username, then:
+
+Enter password for db-username, then:
 
         ```bash
         \dt
         ```
-
 
 
 
@@ -161,6 +170,8 @@ Spin up the backend server in the 'server' directory with:
 ```bash
 gunicorn -w 4 -b 0.0.0.0:5555 app:app
 ```
+Note: May need to change imports to be relative '.' in front of imports, will make this easier in the future.
+
 
 If it won't spin up, see if it's already running with:
 

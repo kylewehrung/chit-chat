@@ -3,13 +3,17 @@ from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 from alembic import context
 import os
+import sys
+
+# Add the directory containing models.py to the Python path
+models_directory = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+sys.path.append(models_directory)
+
 import models as models
-
-
 
 config = context.config
 
-
+# Set the SQLAlchemy URL using environment variables
 config.set_main_option(
     "sqlalchemy.url",
     f"postgresql://{os.getenv('DB_USERNAME')}:{os.getenv('DB_PASSWORD')}@localhost/chit-chat-db"
@@ -24,12 +28,10 @@ if config.config_file_name is not None:
 # for 'autogenerate' support
 target_metadata = models.Base.metadata
 
-
 # other values from the config, defined by the needs of env.py,
 # can be acquired:
 # my_important_option = config.get_main_option("my_important_option")
 # ... etc.
-
 
 def run_migrations_offline() -> None:
     """Run migrations in 'offline' mode.
@@ -54,7 +56,6 @@ def run_migrations_offline() -> None:
     with context.begin_transaction():
         context.run_migrations()
 
-
 def run_migrations_online() -> None:
     """Run migrations in 'online' mode.
 
@@ -75,7 +76,6 @@ def run_migrations_online() -> None:
 
         with context.begin_transaction():
             context.run_migrations()
-
 
 if context.is_offline_mode():
     run_migrations_offline()
