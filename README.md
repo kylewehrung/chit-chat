@@ -60,6 +60,8 @@ pip uninstall package-name
 
 
 
+
+
 ### PostgreSQL Setup
 Change to the server directory:
 Check if the PostgreSQL server is online by running:
@@ -74,6 +76,11 @@ If it's offline, start the server with:
 sudo service postgresql start
 ```
 
+
+
+
+
+
 ### Environment Variables
 
 Set up/create environment variables:
@@ -82,6 +89,12 @@ Set up/create environment variables:
 export DB_USERNAME=username
 export DB_PASSWORD=password
 ```
+
+
+
+
+
+
 
 ### Database Connection
 
