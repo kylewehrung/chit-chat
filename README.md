@@ -20,6 +20,12 @@ Next, you can change to the 'client' directory and run:
 npm start
 ```
 
+
+
+
+
+
+
 ## Backend
 
 ### Installing Dependencies
@@ -49,6 +55,10 @@ Uninstall dependencies with:
 ```bash
 pip uninstall package-name
 ```
+
+
+
+
 
 ### PostgreSQL Setup
 Change to the server directory:
@@ -81,6 +91,56 @@ Check PostgreSQL database connection:
 python test_db_connection.py
 ```
 
+Test password hashing:
+
+```bash
+ python test_password_hashing.py
+ ```
+note: may need to adjust imports to not be relative imports, removing '.' in front of
+the imports from other files like models, config etc..
+
+
+
+
+
+
+### Checking database list and roles:
+
+    Enter postgres shell:
+
+    ```bash
+    sudo -u postgres psql
+    ```
+
+    Check database and roles:
+
+    ```bash
+    \du
+    \l
+```
+
+    Check a bunch of stuff:
+
+    ```bash
+    SELECT table_name FROM information_schema.tables WHERE table_name = 'users';
+    ```
+
+    List tables:
+
+    ```bash
+    psql -U db-username -d db-name -h localhost -W
+    ```
+    Enter password for db-username, then:
+
+        ```bash
+        \dt
+        ```
+
+
+
+
+
+
 ### Running the Backend Server
 
 Spin up the backend server in the 'server' directory with:
@@ -110,6 +170,10 @@ Then re-run the gunicorn command:
 ```bash
 gunicorn -w 4 -b 0.0.0.0:5555 app:app
 ```
+
+
+
+
 
 
 
