@@ -1,12 +1,12 @@
 from flask import Flask, request, jsonify, session, abort
 from flask_restful import Api, Resource
-from .config import app, api, db
-from .models import User
+from config import app, api, db
+from models import User
 from flask_cors import CORS
 import os
 
 
-CORS(app)
+cors = CORS(app, resources={r"/api/*": {"origins": "https://main.dgifr50bzat5p.amplifyapp.com"}})  
 
 
 class HelloWorld(Resource):
