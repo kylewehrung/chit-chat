@@ -6,7 +6,7 @@ from flask_cors import CORS
 import os
 
 
-cors = CORS(app, resources={r"/api/*": {"origins": "https://main.dgifr50bzat5p.amplifyapp.com"}})  
+cors = CORS(app, resources={"origins": "https://main.dgifr50bzat5p.amplifyapp.com"})  
 
 
 class HelloWorld(Resource):
