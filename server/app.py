@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify, session, abort
 from flask_restful import Api, Resource
-from config import app, api, db
-from models import User
+from .config import app, api, db
+from .models import User
 from flask_cors import CORS
 import os
 
