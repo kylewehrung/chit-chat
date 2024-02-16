@@ -5,8 +5,6 @@ import * as Yup from 'yup';
 import useAuthentication from '../hooks/useAuthentication';
 
 
-//Basic Login.js, haven't been able to check if it works yet
-
 
 // Initial values for the form fields
 const initialValues = {
@@ -46,12 +44,13 @@ const Login = () => {
         {({ isSubmitting, errors }) => (
           <Form>
             <label htmlFor="username">Username</label>
-            <Field id="username" name="username" type="text" />
+            <Field id="username" name="username" type="text" autoComplete="current-username" />
             <ErrorMessage name="username" component="div" />
 
             <label htmlFor="password">Password</label>
-            <Field id="password" name="password" type="password" />
+            <Field id="password" name="password" type="password" autoComplete="current-password" />
             <ErrorMessage name="password" component="div" />
+
 
             {errors.submit && <div>{errors.submit}</div>}
 

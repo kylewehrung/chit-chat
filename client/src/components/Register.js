@@ -5,8 +5,6 @@ import * as Yup from 'yup';
 import useAuthentication from '../hooks/useAuthentication';
 
 
-//Basic Register.js, shows up, unable to submit
-
 
 // Initial values for the form fields
 const initialValues = {
@@ -19,7 +17,7 @@ const initialValues = {
 const validationSchema = Yup.object().shape({
   username: Yup.string().required('Required'),
   email: Yup.string().email('Invalid email').required('Required'),
-  password: Yup.string().min(8, 'Must be at least   8 characters').required('Required')
+  password: Yup.string().min(8, 'Must be at least 8 characters').required('Required')
 });
 
 const Register = () => {
@@ -31,7 +29,7 @@ const Register = () => {
     try {
       await register(values.username, values.email, values.password);
     } catch (error) {
-      setErrors({ submit: error.message });
+      setErrors({ submit: console.log('help?') });
     } finally {
       setSubmitting(false);
     }
@@ -48,16 +46,17 @@ const Register = () => {
         {({ isSubmitting, errors }) => (
           <Form>
             <label htmlFor="username">Username</label>
-            <Field id="username" name="username" type="text" />
+            <Field id="username" name="username" type="text" autoComplete="current-username"/>
             <ErrorMessage name="username" component="div" />
 
             <label htmlFor="email">Email Address</label>
-            <Field id="email" name="email" type="email" />
+            <Field id="email" name="email" type="email" autoComplete="current-email" />
             <ErrorMessage name="email" component="div" />
 
             <label htmlFor="password">Password</label>
-            <Field id="password" name="password" type="password" />
+            <Field id="password" name="password" type="password" autoComplete="current-password" />
             <ErrorMessage name="password" component="div" />
+
 
             {errors.submit && <div>{errors.submit}</div>}
 

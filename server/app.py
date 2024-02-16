@@ -1,10 +1,9 @@
-from flask import Flask, request, jsonify, session
+from flask import Flask, request, jsonify, session, abort
 from flask_restful import Api, Resource
-from config import app, api, db
-from models import User
+from .config import app, api, db
+from .models import User
 from flask_cors import CORS
 import os
-
 
 
 CORS(app)
@@ -33,6 +32,7 @@ class Register(Resource):
 
         new_user = User(username=username, email=email, password=password)
         db.session.add(new_user)
+        session['logged_in'] = True
         db.session.commit()
 
         return {'message': 'User created successfully'}, 201
@@ -54,6 +54,19 @@ class Login(Resource):
         return {'message': 'Logged in successfully'}, 200
 
 
+
+class Logout(Resource):
+    def delete(self):
+        if session.get("logged_in"):
+            # Clear the session
+            session.clear()
+            return {},  204  # No content response for successful logout
+
+        return {"error": "Unauthorized", "status_code":  401},  401
+
+
+
+
 class CheckSession(Resource):
     def get(self):
         if session.get('logged_in'):
@@ -64,9 +77,30 @@ class CheckSession(Resource):
 
 
 
+
+# ------------For development only -------------
+class ResetUsers(Resource):
+    def post(self):
+        # Check if the request is made from a trusted source like localhost
+        if request.remote_addr != '127.0.0.1':
+            abort(403)  # Forbidden
+
+        # Clear all user info
+        User.query.delete()
+        db.session.commit()
+
+        return {'message': 'All user data has been cleared.'},  200
+
+api.add_resource(ResetUsers, '/reset_users')
+# ------------For development only -------------
+
+
+
+
 api.add_resource(HelloWorld, "/hello_world")
 api.add_resource(Register, '/register')
 api.add_resource(Login, '/login')
+api.add_resource(Logout, '/logout')
 api.add_resource(CheckSession, '/check_session')
 
 
