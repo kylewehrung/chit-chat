@@ -23,7 +23,7 @@ const useAuthentication = () => {
             } 
             const data = await response.json();
             // Navigate to HomePage after successful registration
-            history.push('/HomePage');
+            history.push('/home_page');
             return data;
         }   catch (err) {
             setError(err.message);
@@ -46,7 +46,7 @@ const login = async (username, password) => {
         const data = await response.json();
         setUser(username); // Set user to the username after login
         // Push to HomePage after successful login
-        history.push('/HomePage');
+        history.push('/home_page');
         return data;
     } catch (err) {
         setError(err.message);
