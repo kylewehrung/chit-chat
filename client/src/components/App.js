@@ -20,10 +20,10 @@ function App() {
   return (
     <Router> 
       <Switch>
-        <Route path="/register" component={Register} />
-        <Route path="/login" component={Login} />
-        <Route path="/" component={HomePage} />
-        <Redirect to="/login" />
+        <Route path="/api/register" component={Register} />
+        <Route path="/api/login" component={Login} />
+        <Route path="/home_page" component={HomePage} />
+        <Redirect to="/api/login" />
       </Switch>
     </Router>
   );

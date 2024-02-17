@@ -165,13 +165,11 @@ Enter password for db-username, then:
 
 ### Running the Backend Server
 
-Spin up the backend server in the 'server' directory with:
+Spin up the backend server in the 'chit-chat' directory with:
 
 ```bash
-gunicorn -w 4 -b 0.0.0.0:5555 app:app
+gunicorn -w 4 -b 0.0.0.0:5555 server.app:app
 ```
-Note: May need to change imports to be relative '.' in front of imports, will make this easier in the future.
-
 
 If it won't spin up, see if it's already running with:
 
@@ -192,7 +190,7 @@ kill -9 PID PID PID
 Then re-run the gunicorn command:
 
 ```bash
-gunicorn -w 4 -b 0.0.0.0:5555 app:app
+gunicorn -w 4 -b 0.0.0.0:5555 server.app:app
 ```
 
 
