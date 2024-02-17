@@ -6,7 +6,7 @@ from flask_cors import CORS
 import os
 
 
-cors = CORS(app, resources={"origins": "https://main.dgifr50bzat5p.amplifyapp.com"})  
+cors = CORS(app, resources={r"/api/*": {"origins": "https://main.dgifr50bzat5p.amplifyapp.com"}})  
 
 
 class HelloWorld(Resource):
@@ -97,11 +97,12 @@ api.add_resource(ResetUsers, '/reset_users')
 
 
 
-api.add_resource(HelloWorld, "/hello_world")
-api.add_resource(Register, '/register')
-api.add_resource(Login, '/login')
-api.add_resource(Logout, '/logout')
-api.add_resource(CheckSession, '/check_session')
+
+api.add_resource(HelloWorld, "/api/hello_world")
+api.add_resource(Register, '/api/register')
+api.add_resource(Login, '/api/login')
+api.add_resource(Logout, '/api/logout')
+api.add_resource(CheckSession, '/api/check_session')
 
 
 

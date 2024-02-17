@@ -12,7 +12,7 @@ const useAuthentication = () => {
     // Function to register a new user:
     const register = async (username, email, password) => {
         try {
-            const response = await fetch ('/register', {
+            const response = await fetch ('/api/register', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ username, email, password }),
@@ -34,7 +34,7 @@ const useAuthentication = () => {
 // Function to log in an existing user:
 const login = async (username, password) => {
     try {
-        const response = await fetch('/login', {
+        const response = await fetch('/api/login', {
             method: 'POST',  
             headers: { 'Content-Type': 'application/json' }, 
             body: JSON.stringify ({ username, password }),
@@ -59,7 +59,7 @@ const login = async (username, password) => {
     //Function to check if the user is logged in:
     const checkSession = async() => {
         try {
-            const response = await fetch('/check_session', {
+            const response = await fetch('/api/check_session', {
                 method: 'GET',
                 credentials: 'include', // Send cookies with the request
             });
@@ -79,7 +79,7 @@ const login = async (username, password) => {
 //Function to log out the user:
 const logout = async () => {
     try {
-        const response = await fetch("/logout", { method: "DELETE" });
+        const response = await fetch("/api/logout", { method: "DELETE" });
         if (response.ok) {
             setUser(null); // Set user to null upon successful logout
             console.log('logged out')
