@@ -96,7 +96,7 @@ source set_env_vars.sh development
 Set environment variables to production:
 
 ```bash
-source set_env_vars.sh development
+source set_env_vars.sh production
 ```
 
 
