@@ -1,4 +1,3 @@
-// src/components/App.js
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import useAuthentication from '../hooks/useAuthentication';
@@ -17,13 +16,16 @@ function App() {
     return <div>Error: {error}</div>;
   }
 
+  const backendUrl = process.env.REACT_APP_BACKEND_URL;
+  console.log(backendUrl)
+
   return (
     <Router> 
       <Switch>
-        <Route path="/api/register" component={Register} />
-        <Route path="/api/login" component={Login} />
+        <Route path={`${backendUrl}/api/register`} component={Register} />
+        <Route path={`${backendUrl}/api/login`} component={Login} />
         <Route path="/home_page" component={HomePage} />
-        <Redirect to="/api/login" />
+        <Redirect to={`${backendUrl}/api/login`} />
       </Switch>
     </Router>
   );
