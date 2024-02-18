@@ -83,7 +83,25 @@ sudo service postgresql start
 
 ### Environment Variables
 
-Set up/create environment variables:
+
+
+Set up/create environment variables, largely for endpoints:
+
+Set environment variables to development:
+
+```bash
+source set_env_vars.sh development
+```
+
+Set environment variables to production:
+
+```bash
+source set_env_vars.sh development
+```
+
+
+
+Set environment variables directly:
 
 ```bash
 export DB_USERNAME=username
@@ -120,6 +138,7 @@ Generate Alembic.ini file to run migrations:
  python generate_alembic_ini.py
  ```
 Note: Make sure to remove/add generated alembic.ini file from .gitignore 
+
 
 
 
@@ -184,7 +203,7 @@ lsof -i :5555
 Kill these PIDs with:
 
 ```bash
-kill -9 PID PID PID
+pkill -9 gunicorn
 ```
 
 Then re-run the gunicorn command:
