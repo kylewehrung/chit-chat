@@ -8,11 +8,12 @@ const useAuthentication = () => {
     const [error, setError] = useState(null);
     const history = useHistory(); 
 
+    const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
     // Function to register a new user:
     const register = async (username, email, password) => {
         try {
-            const response = await fetch ('/api/register', {
+            const response = await fetch(`${backendUrl}/api/register`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ username, email, password }),
@@ -34,7 +35,7 @@ const useAuthentication = () => {
 // Function to log in an existing user:
 const login = async (username, password) => {
     try {
-        const response = await fetch('/api/login', {
+        const response = await fetch(`${backendUrl}/api/login`, {
             method: 'POST',  
             headers: { 'Content-Type': 'application/json' }, 
             body: JSON.stringify ({ username, password }),
@@ -59,7 +60,7 @@ const login = async (username, password) => {
     //Function to check if the user is logged in:
     const checkSession = async() => {
         try {
-            const response = await fetch('/api/check_session', {
+            const response = await fetch(`${backendUrl}/api/check_session`, { //Error comes from here
                 method: 'GET',
                 credentials: 'include', // Send cookies with the request
             });
@@ -79,7 +80,7 @@ const login = async (username, password) => {
 //Function to log out the user:
 const logout = async () => {
     try {
-        const response = await fetch("/api/logout", { method: "DELETE" });
+        const response = await fetch(`${backendUrl}/api/logout`, { method: "DELETE" });
         if (response.ok) {
             setUser(null); // Set user to null upon successful logout
             console.log('logged out')
@@ -100,7 +101,8 @@ const logout = async () => {
     //Call checkSession on first render:
     useEffect(() => {
         checkSession();
-    }, []);
+        // eslint-disable-next-line
+    }, []); // Come back to this
 
 
 
