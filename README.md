@@ -119,6 +119,8 @@ export SQLALCHEMY_URL=postgresql://db-username:db-password@localhost/-db-name
 
 Check PostgreSQL database connection:
 
+Change into the 'server directory' then
+
 ```bash
 python test_db_connection.py
 ```

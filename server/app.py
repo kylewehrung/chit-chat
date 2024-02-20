@@ -17,9 +17,10 @@ FLASK_ENV = os.getenv('FLASK_ENV', 'development')
 
 # Set the base URL for API endpoints based on the environment
 if FLASK_ENV == 'production':
-    BASE_URL = '/https://chit-chat-backend-98277c5b9aba.herokuapp.com/'
+    BASE_URL = 'https://chit-chat-backend-98277c5b9aba.herokuapp.com'
 else:
     BASE_URL = ''
+
 
 
 
