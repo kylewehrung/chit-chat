@@ -19,13 +19,21 @@ function App() {
   const backendUrl = process.env.REACT_APP_BACKEND_URL;
   console.log(backendUrl)
 
+  let registerPath = '/api/register';
+  let loginPath = '/api/login';
+
+  if (backendUrl) {
+    registerPath = `${backendUrl}${registerPath}`;
+    loginPath = `${backendUrl}${loginPath}`;
+  }
+
   return (
     <Router> 
       <Switch>
-        <Route path={`${backendUrl}/api/register`} component={Register} />
-        <Route path={`${backendUrl}/api/login`} component={Login} />
+        <Route path={registerPath} component={Register} />
+        <Route path={loginPath} component={Login} />
         <Route path="/home_page" component={HomePage} />
-        <Redirect to={`${backendUrl}/api/login`} />
+        <Redirect to={loginPath} />
       </Switch>
     </Router>
   );
