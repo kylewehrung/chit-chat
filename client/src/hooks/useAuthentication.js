@@ -1,4 +1,3 @@
-// src/hooks/useAuthentication.js
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
@@ -8,7 +7,7 @@ const useAuthentication = () => {
     const [error, setError] = useState(null);
     const history = useHistory(); 
 
-    const backendUrl = process.env.REACT_APP_BACKEND_URL;
+    let backendUrl = process.env.REACT_APP_PROXY_URL || 'http://localhost:5555'; // Default to localhost for dev environment
 
     // Function to register a new user:
     const register = async (username, email, password) => {
@@ -32,35 +31,33 @@ const useAuthentication = () => {
         }
     };
 
-// Function to log in an existing user:
-const login = async (username, password) => {
-    try {
-        const response = await fetch(`${backendUrl}/api/login`, {
-            method: 'POST',  
-            headers: { 'Content-Type': 'application/json' }, 
-            body: JSON.stringify ({ username, password }),
-            credentials: 'include',
-        });
-        if (!response.ok) {
-            throw new Error('Login Failed  ): ');
-        }
-        const data = await response.json();
-        setUser(username); // Set user to the username after login
-        // Push to HomePage after successful login
-        history.push('/home_page');
-        return data;
-    } catch (err) {
-        setError(err.message);
-        throw err;
-    }
-};
-
-
-
-    //Function to check if the user is logged in:
-    const checkSession = async() => {
+    // Function to log in an existing user:
+    const login = async (username, password) => {
         try {
-            const response = await fetch(`${backendUrl}/api/check_session`, { //Error comes from here
+            const response = await fetch(`${backendUrl}/api/login`, {
+                method: 'POST',  
+                headers: { 'Content-Type': 'application/json' }, 
+                body: JSON.stringify ({ username, password }),
+                credentials: 'include',
+            });
+            if (!response.ok) {
+                throw new Error('Login Failed  ): ');
+            }
+            const data = await response.json();
+            setUser(username); // Set user to the username after login
+            // Push to HomePage after successful login
+            history.push('/home_page');
+            return data;
+        } catch (err) {
+            setError(err.message);
+            throw err;
+        }
+    };
+
+    // Function to check if the user is logged in:
+    const checkSession = async () => {
+        try {
+            const response = await fetch(`${backendUrl}/api/check_session`, {
                 method: 'GET',
                 credentials: 'include', // Send cookies with the request
             });
@@ -70,46 +67,38 @@ const login = async (username, password) => {
             } else {
                 setUser(null);
             }
-        }   catch (err) {
+        } catch (err) {
             setError(err.message);
-        }  finally {
+        } finally {
             setLoading(false);
         }
     }; 
 
-//Function to log out the user:
-const logout = async () => {
-    try {
-        const response = await fetch(`${backendUrl}/api/logout`, { method: "DELETE" });
-        if (response.ok) {
-            setUser(null); // Set user to null upon successful logout
-            console.log('logged out')
-        } else {
-            // If response is not ok, throw an error
-            throw new Error('Logout failed');
+    // Function to log out the user:
+    const logout = async () => {
+        try {
+            const response = await fetch(`${backendUrl}/api/logout`, { method: "DELETE" });
+            if (response.ok) {
+                setUser(null); // Set user to null upon successful logout
+                console.log('logged out')
+            } else {
+                // If response is not ok, throw an error
+                throw new Error('Logout failed');
+            }
+        } catch (error) {
+            // Handle any errors that occur during the logout process
+            setError(error.message);
+            console.error('Logout Error:', error);
         }
-    } catch (error) {
-        // Handle any errors that occur during the logout process
-        setError(error.message);
-        console.error('Logout Error:', error);
-    }
-}
+    };
 
-    
-
-
-    //Call checkSession on first render:
+    // Call checkSession on first render:
     useEffect(() => {
         checkSession();
         // eslint-disable-next-line
     }, []); // Come back to this
 
-
-
-
     return { user, loading, error, register, login, logout };
-
-} //the big one
-
+}
 
 export default useAuthentication;
