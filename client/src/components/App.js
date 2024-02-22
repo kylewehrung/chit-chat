@@ -16,8 +16,8 @@ function App() {
     return <div>Error: {error}</div>;
   }
 
-  const backendUrl = process.env.REACT_APP_BACKEND_URL;
-  console.log(backendUrl)
+  let backendUrl = process.env.REACT_APP_PROXY_URL || 'http://localhost:5555';
+  console.log(backendUrl);
 
   let registerPath = '/api/register';
   let loginPath = '/api/login';
