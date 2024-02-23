@@ -12,6 +12,9 @@ load_dotenv()
 # Initialize Flask app and CORS
 cors_origin = os.getenv('CORS_ORIGIN', 'http://localhost:4000')
 
+cors = CORS(app, resources={r"/api/*": {"origins": cors_origin, "supports_credentials": True}})
+
+
 # Check if the application is running in development mode
 FLASK_ENV = os.getenv('FLASK_ENV', 'development')
 
