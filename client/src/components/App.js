@@ -16,16 +16,11 @@ function App() {
     return <div>Error: {error}</div>;
   }
 
-  let backendUrl = process.env.REACT_APP_PROXY_URL || 'http://localhost:5555';
-  console.log(backendUrl);
 
   let registerPath = '/api/register';
   let loginPath = '/api/login';
 
-  if (backendUrl) {
-    registerPath = `${backendUrl}${registerPath}`;
-    loginPath = `${backendUrl}${loginPath}`;
-  }
+
 
   return (
     <Router> 

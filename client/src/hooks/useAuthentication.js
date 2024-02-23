@@ -7,7 +7,7 @@ const useAuthentication = () => {
     const [error, setError] = useState(null);
     const history = useHistory(); 
 
-    let backendUrl = process.env.REACT_APP_PROXY_URL || 'http://localhost:5555'; // Default to localhost for dev environment
+    let backendUrl = process.env.REACT_APP_PROXY_URL; 
 
     // Function to register a new user:
     const register = async (username, email, password) => {
@@ -77,7 +77,7 @@ const useAuthentication = () => {
     // Function to log out the user:
     const logout = async () => {
         try {
-            const response = await fetch(`${backendUrl}/api/logout`, { method: "DELETE" });
+            const response = await fetch('/api/logout', { method: "DELETE" });
             if (response.ok) {
                 setUser(null); // Set user to null upon successful logout
                 console.log('logged out')
