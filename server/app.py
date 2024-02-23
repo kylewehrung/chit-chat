@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Initialize Flask app and CORS
-CORS(app)
+cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
 
 # Check if the application is running in development mode
