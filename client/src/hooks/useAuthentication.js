@@ -77,7 +77,7 @@ const useAuthentication = () => {
     // Function to log out the user:
     const logout = async () => {
         try {
-            const response = await fetch('/api/logout', { method: "DELETE" });
+            const response = await fetch(`${backendUrl}/api/logout`, { method: "DELETE" });
             if (response.ok) {
                 setUser(null); // Set user to null upon successful logout
                 console.log('logged out')

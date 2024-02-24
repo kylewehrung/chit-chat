@@ -9,10 +9,6 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-cors = CORS(app, supports_credentials=True)
-
-
-
 # Check if the application is running in development mode
 FLASK_ENV = os.getenv('FLASK_ENV', 'development')
 
@@ -21,6 +17,13 @@ if FLASK_ENV == 'production':
     BASE_URL = 'https://chit-chat-backend-98277c5b9aba.herokuapp.com'
 else:
     BASE_URL = ''
+
+# For development, allow requests from localhost
+# For production, allow requests from the frontend's origin
+if FLASK_ENV == 'production':
+    CORS(app, supports_credentials=True, origins=['https://main.dgifr50bzat5p.amplifyapp.com'])
+else:
+    CORS(app, supports_credentials=True, origins=['http://localhost:4000'])
 
 
 
