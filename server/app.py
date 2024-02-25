@@ -14,10 +14,10 @@ FLASK_ENV = os.getenv('FLASK_ENV', 'development')
 
 # Set the base URL for API endpoints based on the environment
 if FLASK_ENV == 'production':
-    BASE_URL = '/api'  
+    BASE_URL = '/api/https://chit-chat-backend-98277c5b9aba.herokuapp.com'  
     CORS(app, supports_credentials=True, origins=['http://localhost:4000']) # Adjust this to frontend's origin in production, eventually
 else:
-    BASE_URL = '/api'  # Same path prefix for development
+    BASE_URL = '/api'  
     CORS(app, supports_credentials=True, origins=['http://localhost:4000'])
     print('development')
 
@@ -89,12 +89,12 @@ class CheckSession(Resource):
 
 
 
+api.add_resource(HelloWorld, f"{BASE_URL}/hello_world")
+api.add_resource(Register, f"{BASE_URL}/register")
+api.add_resource(Login, f"{BASE_URL}/login")
+api.add_resource(Logout, f"{BASE_URL}/logout")
+api.add_resource(CheckSession, f"{BASE_URL}/check_session")
 
-api.add_resource(HelloWorld, f"{BASE_URL}/api/hello_world")
-api.add_resource(Register, f"{BASE_URL}/api/register")
-api.add_resource(Login, f"{BASE_URL}/api/login")
-api.add_resource(Logout, f"{BASE_URL}/api/logout")
-api.add_resource(CheckSession, f"{BASE_URL}/api/check_session")
 
 
 
@@ -116,8 +116,8 @@ class ShowEnv(Resource):
         env_vars = {key: value for key, value in os.environ.items() if key.startswith("PORT") or key.startswith("CORS_ORIGIN") or key.startswith("SQLALCHEMY_") or key.startswith("SECRET_KEY") or key.startswith("DB_USERNAME") or key.startswith("DB_PASSWORD") or key.startswith("FLASK_ENV")}
         return env_vars,  200
 
-api.add_resource(ShowEnv, f"{BASE_URL}/api/show_env")
-api.add_resource(ResetUsers, f"{BASE_URL}/api/reset_users")
+api.add_resource(ShowEnv, f"{BASE_URL}/show_env")
+api.add_resource(ResetUsers, f"{BASE_URL}/reset_users")
 # ------------For development only -------------
 
 
