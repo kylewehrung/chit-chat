@@ -17,7 +17,7 @@ if FLASK_ENV == 'production':
     BASE_URL = 'https://chit-chat-backend-98277c5b9aba.herokuapp.com'
     CORS(app, supports_credentials=True, origins=['http://localhost:4000']) # Will change to frontend url when I use it
 else:
-    BASE_URL = ''
+    BASE_URL = 'https://chit-chat-backend-98277c5b9aba.herokuapp.com' # testing something, will change back to ''
     CORS(app, supports_credentials=True, origins=['http://localhost:4000'])
     print('development')
 
