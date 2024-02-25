@@ -20,8 +20,11 @@ Next, you can change to the 'client' directory and run:
 npm start
 ```
 
+To kill all PID's in client directory run:
 
-
+```bash
+sudo lsof -ti:4000 | xargs sudo kill -9
+```
 
 
 

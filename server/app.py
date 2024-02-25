@@ -15,15 +15,13 @@ FLASK_ENV = os.getenv('FLASK_ENV', 'development')
 # Set the base URL for API endpoints based on the environment
 if FLASK_ENV == 'production':
     BASE_URL = 'https://chit-chat-backend-98277c5b9aba.herokuapp.com'
+    CORS(app, supports_credentials=True, origins=['http://localhost:4000']) # Will change to frontend url when I use it
 else:
     BASE_URL = ''
-
-# For development, allow requests from localhost
-# For production, allow requests from the frontend's origin
-if FLASK_ENV == 'production':
-    CORS(app, supports_credentials=True, origins=['https://main.dgifr50bzat5p.amplifyapp.com'])
-else:
     CORS(app, supports_credentials=True, origins=['http://localhost:4000'])
+    print('development')
+
+
 
 
 
