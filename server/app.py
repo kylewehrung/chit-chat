@@ -14,10 +14,10 @@ FLASK_ENV = os.getenv('FLASK_ENV', 'development')
 
 # Set the base URL for API endpoints based on the environment
 if FLASK_ENV == 'production':
-    BASE_URL = '/https://chit-chat-backend-98277c5b9aba.herokuapp.com'
-    CORS(app, supports_credentials=True, origins=['http://localhost:4000']) # Will change to frontend url when I use it
+    BASE_URL = '/api'  
+    CORS(app, supports_credentials=True, origins=['http://localhost:4000']) # Adjust this to frontend's origin in production, eventually
 else:
-    BASE_URL = '/https://chit-chat-backend-98277c5b9aba.herokuapp.com' # testing something, will change back to ''
+    BASE_URL = '/api'  # Same path prefix for development
     CORS(app, supports_credentials=True, origins=['http://localhost:4000'])
     print('development')
 
