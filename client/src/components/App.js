@@ -17,21 +17,19 @@ function App() {
   }
 
 
-  let registerPath = '/api/register';
-  let loginPath = '/api/login';
-
-
-
+  
   return (
-    <Router> 
+    <Router>  
       <Switch>
-        <Route path={registerPath} component={Register} />
-        <Route path={loginPath} component={Login} />
+        <Route path='/register' component={Register} />
+        <Route path='/login' component={Login} />
         <Route path="/home_page" component={HomePage} />
-        <Redirect to={loginPath} />
+        <Redirect to='/login' />
       </Switch>
     </Router>
   );
+
+  
 }
 
 export default App;
