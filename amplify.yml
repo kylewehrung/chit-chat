@@ -12,11 +12,15 @@ frontend:
       commands:
         - echo "Starting build phase..."
         - npm run build
+        # Add a command to copy manifest.json to the expected directory
+        - cp public/manifest.json build/manifest.json
   artifacts:
-    # Ensure that Amplify is looking for artifacts in the 'build' directory pls
+    # Ensure that Amplify is looking for artifacts in the 'build' directory
     baseDirectory: client/build
     files:
       - '**/*'
+      # Include manifest.json in the build artifacts
+      - 'manifest.json'
 cache:
   paths:
     - node_modules/**/*
