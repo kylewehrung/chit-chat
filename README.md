@@ -133,8 +133,6 @@ Test password hashing:
 ```bash
  python test_password_hashing.py
  ```
-Note: May need to adjust imports to not be relative imports, removing '.' in front of
-the imports from other files like models, config etc..
 
 
 Generate Alembic.ini file to run migrations:
@@ -142,7 +140,21 @@ Generate Alembic.ini file to run migrations:
 ```bash
  python generate_alembic_ini.py
  ```
-Note: Make sure to remove/add generated alembic.ini file from .gitignore 
+
+ Run migrations:
+
+```bash
+alembic revision --autogenerate -m "Your migration message here"
+```
+
+```bash
+alembic upgrade head
+```
+
+Note for Database Connection segment above: 
+Make sure to remove/add generated alembic.ini file from .gitignore.
+May also need to adjust imports to not be relative imports, removing '.' in front of
+the imports from other files like models, config etc..
 
 
 
