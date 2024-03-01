@@ -10,12 +10,13 @@ class Config:
     # Secret key for session management and security
     SECRET_KEY = os.getenv('SECRET_KEY') 
     
-    # Check if the application is running in development mode
-    FLASK_ENV = os.getenv('FLASK_ENV', 'development')
-    
-    # Database configuration
-    if FLASK_ENV == 'production':
-        SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL')
+    # Function to correct the dialect in the DATABASE_URL
+    def correct_database_url(url):
+        return url.replace('postgres://', 'postgresql://')
+
+    # Use the corrected DATABASE_URL for production
+    if os.getenv('FLASK_ENV') == 'production':
+        SQLALCHEMY_DATABASE_URI = correct_database_url(os.getenv('DATABASE_URL'))
     else:
         SQLALCHEMY_DATABASE_URI = os.getenv('SQLALCHEMY_URL')
     
