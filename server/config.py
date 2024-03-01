@@ -10,7 +10,10 @@ class Config:
     # Secret key for session management and security
     SECRET_KEY = os.getenv('SECRET_KEY') 
     
-    # Function to correct the dialect in the DATABASE_URL
+    # Check if the application is running in development mode
+    FLASK_ENV = os.getenv('FLASK_ENV', 'development')
+    
+   # Function to correct the dialect in the DATABASE_URL
     def correct_database_url(url):
         return url.replace('postgres://', 'postgresql://')
 
