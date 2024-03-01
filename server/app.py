@@ -15,7 +15,7 @@ FLASK_ENV = os.getenv('FLASK_ENV', 'development')
 # Set the base URL for API endpoints based on the environment
 if FLASK_ENV == 'production':
     BASE_URL = '/api'  
-    CORS(app, supports_credentials=True, origins=['*']) 
+    CORS(app, supports_credentials=True, origins=['*']) # Come back to these, past iteration was still getting blocked by cors
 else:
     BASE_URL = '/api'  
     CORS(app, supports_credentials=True, origins=['*'])
