@@ -135,20 +135,34 @@ Test password hashing:
  ```
 
 
-Generate Alembic.ini file to run migrations:
+Generate Alembic.ini file to run migrations
+Navigate to 'server' directory:
 
+For local database migrations:
 ```bash
- python generate_alembic_ini.py
+ python localdb_generate_alembic_ini.py
  ```
+
+ For heroku database migrations:
+```bash
+ python heroku_generate_alembic_ini.py
+ ```
+
 
  Run migrations:
 
+ Locally:
 ```bash
 alembic revision --autogenerate -m "Your migration message here"
 ```
 
 ```bash
 alembic upgrade head
+```
+
+With Heroku:
+```bash
+heroku run alembic upgrade head --app chit-chat-backend
 ```
 
 Note for Database Connection segment above: 
