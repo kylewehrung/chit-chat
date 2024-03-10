@@ -10,7 +10,7 @@ database_url = os.environ.get('DATABASE_URL')
 alembic_ini_content = f"""\
 [alembic]
 script_location = alembic
-DATABASE_URL = {database_url}
+
 
 
 # other basic configurations
