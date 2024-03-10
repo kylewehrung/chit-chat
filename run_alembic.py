@@ -1,13 +1,9 @@
 import os
-import sys
 from alembic.config import Config
 from alembic import command
 
-
-sys.path.append('server')
-
-# Load the Alembic configuration
-alembic_config = Config("./alembic.ini")
+# Create a new Alembic configuration
+alembic_config = Config()
 
 # Set the database URL from the DATABASE_URL environment variable
 alembic_config.set_main_option("sqlalchemy.url", os.getenv("DATABASE_URL"))
