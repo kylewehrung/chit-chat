@@ -1,8 +1,8 @@
 from flask import Flask, request, jsonify, session, abort
 from flask_restful import Api, Resource
 from flask_cors import CORS
-from server.config import app, api, db
-from server.models import User
+from .config import app, api, db
+from .models import User
 import os
 from dotenv import load_dotenv
 
