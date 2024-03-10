@@ -1,6 +1,9 @@
 import os
+import sys
 from alembic.config import Config
 from alembic import command
+
+sys.path.append('server')
 
 # Create a new Alembic configuration
 alembic_config = Config()
@@ -13,3 +16,5 @@ alembic_config.set_main_option("script_location", "alembic")
 
 # Run the migration
 command.upgrade(alembic_config, "head")
+
+
