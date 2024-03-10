@@ -1,7 +1,7 @@
 server/.env
 .env.development
 .env.production
-server/alembic.ini
+# server/alembic.ini
 # alembic.ini
 
 #amplify-do-not-edit-begin
