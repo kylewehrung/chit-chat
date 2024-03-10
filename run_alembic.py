@@ -1,6 +1,10 @@
 import os
+import sys
 from alembic.config import Config
 from alembic import command
+
+# Add the server directory to the Python path
+sys.path.append('server')
 
 # Load the Alembic configuration
 alembic_config = Config("alembic.ini")
