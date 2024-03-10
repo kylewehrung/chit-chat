@@ -9,7 +9,7 @@ import sys
 models_directory = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 sys.path.append(models_directory)
 
-import models as models
+import server.models as models
 
 config = context.config
 
