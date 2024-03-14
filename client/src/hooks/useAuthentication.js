@@ -64,6 +64,7 @@ const useAuthentication = () => {
             if (response.ok) {
                 const data = await response.json();
                 setUser(data);
+                console.log(`User Data: ${data}`)
             } else {
                 setUser(null);
             }
@@ -80,6 +81,7 @@ const useAuthentication = () => {
             const response = await fetch('/api/logout', { method: "DELETE" });
             if (response.ok) {
                 setUser(null); // Set user to null upon successful logout
+                history.push('/register');
                 console.log('logged out')
             } else {
                 // If response is not ok, throw an error
