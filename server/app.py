@@ -82,10 +82,13 @@ class Logout(Resource):
 
 class CheckSession(Resource):
     def get(self):
-        if session.get('logged_in'):
-            return {'message': 'Session active'},  200
+        logged_in = session.get('logged_in')
+        app.logger.info(f"CheckSession called, logged_in: {logged_in}")
+        if logged_in:
+            return {'message': 'Session active'}, 200
         else:
-            return {'message': 'Session not active'},  401
+            return {'message': 'Session not active'}, 401
+
 
 
 
