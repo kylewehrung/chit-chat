@@ -27,7 +27,7 @@ else:
 
 
 # Set session cookie options
-app.config['SESSION_COOKIE_SAMESITE'] = 'None'  # Set SameSite attribute to None
+app.config['SESSION_COOKIE_SAMESITE'] = 'Lax'  # Set SameSite attribute to None
 app.config['SESSION_COOKIE_SECURE'] = True      # Set Secure attribute to True
 
 
