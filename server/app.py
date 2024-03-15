@@ -10,7 +10,6 @@ import logging
 # Configure logging
 logging.basicConfig(level=logging.INFO)
 
-
 load_dotenv()
 
 # Check if the application is running in development mode
@@ -26,6 +25,10 @@ else:
     print('development')
 
 
+
+# Set session cookie options
+app.config['SESSION_COOKIE_SAMESITE'] = 'None'  # Set SameSite attribute to None
+app.config['SESSION_COOKIE_SECURE'] = True      # Set Secure attribute to True
 
 
 
