@@ -5,6 +5,10 @@ from .config import app, api, db
 from .models import User
 import os
 from dotenv import load_dotenv
+import logging
+
+# Configure logging
+logging.basicConfig(level=logging.INFO)
 
 
 load_dotenv()
@@ -88,6 +92,7 @@ class CheckSession(Resource):
             return {'message': 'Session active'}, 200
         else:
             return {'message': 'Session not active'}, 401
+
 
 
 
