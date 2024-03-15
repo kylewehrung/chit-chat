@@ -7,10 +7,13 @@ import os
 from dotenv import load_dotenv
 import logging
 
+
 # Configure logging
 logging.basicConfig(level=logging.INFO)
 
 load_dotenv()
+
+
 
 # Check if the application is running in development mode
 FLASK_ENV = os.getenv('FLASK_ENV', 'development')
@@ -27,8 +30,8 @@ else:
 
 
 # Set session cookie options
-app.config['SESSION_COOKIE_SAMESITE'] = 'Lax'  # Set SameSite attribute to None
-app.config['SESSION_COOKIE_SECURE'] = True      # Set Secure attribute to True
+app.config['SESSION_COOKIE_SAMESITE'] = 'Lax'  # Will need to change this to partitioned?
+app.config['SESSION_COOKIE_SECURE'] = True
 
 
 
@@ -90,7 +93,6 @@ class Logout(Resource):
 class CheckSession(Resource):
     def get(self):
         logged_in = session.get('logged_in')
-        app.logger.info(f"CheckSession called, logged_in: {logged_in}")
         if logged_in:
             return {'message': 'Session active'}, 200
         else:
