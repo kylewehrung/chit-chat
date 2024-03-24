@@ -165,6 +165,11 @@ With Heroku:
 heroku run alembic upgrade head --app chit-chat-backend
 ```
 
+Check Heroku database:
+```bash
+heroku pg:psql --app chit-chat-backend
+```
+
 Note for Database Connection segment above: 
 Make sure to remove/add generated alembic.ini file from .gitignore.
 May also need to adjust imports to not be relative imports, removing '.' in front of
