@@ -64,7 +64,6 @@ const useAuthentication = () => {
             if (response.ok) {
                 const data = await response.json();
                 setUser(data);
-                console.log(`User Data: ${data}`)
             } else {
                 setUser(null);
             }
