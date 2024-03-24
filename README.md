@@ -104,18 +104,6 @@ source set_env_vars.sh production
 
 
 
-Set environment variables directly:
-
-```bash
-export DB_USERNAME=username
-export DB_PASSWORD=password
-export SQLALCHEMY_URL=postgresql://db-username:db-password@localhost/-db-name
-```
-
-
-
-
-
 
 
 ### Database Connection
@@ -135,7 +123,19 @@ Test password hashing:
  ```
 
 
-Generate Alembic.ini file to run migrations
+
+### Switching between production and development workflow:
+### Development environment:
+
+The alembic directory and alembic.ini file should be in the server directory. In the env.py file, change the import from import server.models as models to import models as models. Next generate alembic.ini file if needed using script, make sure this alembic.ini is in .gitignore. Run migratiions and check if they run correctly using psql. May have to manually do it using psql commands. 
+
+### Production environment:
+For production development, the alembic directory and alembic.ini file should be in the root project directory.
+Alembic.ini can be generated using script, does not need to be hidden in .gitignore as no sensitive information is in it.
+Change import in env.py file to import server.models as models. Run migrations using heroku commands, doing it manually if needed as well. 
+
+#### Generate Alembic.ini file to run migrations
+
 Navigate to 'server' directory:
 
 For local database migrations:
@@ -152,6 +152,7 @@ For local database migrations:
  Run migrations:
 
  Locally:
+
 ```bash
 alembic revision --autogenerate -m "Your migration message here"
 ```
@@ -170,10 +171,7 @@ Check Heroku database:
 heroku pg:psql --app chit-chat-backend
 ```
 
-Note for Database Connection segment above: 
-Make sure to remove/add generated alembic.ini file from .gitignore.
-May also need to adjust imports to not be relative imports, removing '.' in front of
-the imports from other files like models, config etc..
+
 
 
 
@@ -218,7 +216,7 @@ Enter password for db-username, then:
 
 
 
-### Running the Backend Server
+### Running the Backend Server locally
 
 Spin up the backend server in the 'chit-chat' directory with:
 
@@ -230,10 +228,6 @@ If it won't spin up, see if it's already running with:
 
 ```bash
 pgrep gunicorn
-```
-or 
-```bash
-lsof -i :5555
 ```
 
 Kill these PIDs with:
