@@ -19,15 +19,17 @@ const validationSchema = Yup.object().shape({
 });
 
 const StyledContainer = styled.div`
- display: flex;
- flex-direction: column;
- align-items: center;
- justify-content: center;
- height: 100vh;
- background-image: url('https://i.etsystatic.com/7869041/r/il/e367c6/4871628960/il_1588xN.4871628960_n54h.jpg');
- background-size: cover;
- background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; /* Ensure container takes at least full viewport height */
+  background-image: url('https://i.pinimg.com/564x/13/19/40/131940d66d425572cecd5577dc793a53.jpg');
+  ${'' /* background-size: cover; */}
+  background-position: center;
+  overflow-y: auto; /* Allow vertical scrolling if content overflows */
 `;
+
 
 const StyledHeader = styled.h1`
  text-align: center;
