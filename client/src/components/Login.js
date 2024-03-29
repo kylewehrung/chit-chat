@@ -16,26 +16,23 @@ const validationSchema = Yup.object().shape({
  password: Yup.string().min(8, 'Must be at least 8 characters').required('Required')
 });
 
-const StyledHeader = styled.h1`
- text-align: center;
- color: white;
- z-index: 2; 
- font-size: 24px; 
-`;
-
 
 const StyledContainer = styled.div`
- position: relative;
  display: flex;
  flex-direction: column;
  align-items: center;
- justify-content: flex-start; 
- background-image: url('https://i.pinimg.com/564x/63/2e/45/632e45ba5c4fc3596d5bda046880a54a.jpg');
+ justify-content: center; 
+ margin-top: -105px;
  background-repeat: no-repeat; 
  min-height: 100vh; /* Ensure container takes at least full viewport height */
  overflow-y: auto; /* Allow vertical scrolling if content overflows */
 `;
 
+const StyledHeader = styled.h1`
+ text-align: center;
+ color: white;
+ z-index: 2; 
+`;
 
 const LeftBackground = styled.div`
  position: absolute;
@@ -53,7 +50,7 @@ const MiddleBackground = styled.div`
  top: 0;
  width: 35%; 
  height: 100%;
- background-image: url('https://i.pinimg.com/564x/63/2e/45/632e45ba5c4fc3596d5bda046880a54a.jpg'); /* Specify middle image URL */
+ background-image: url('https://i.pinimg.com/564x/63/2e/45/632e45ba5c4fc3596d5bda046880a54a.jpg'); 
  background-size: cover;
 `;
 
@@ -63,7 +60,7 @@ const RightBackground = styled.div`
  top: 0;
  width: 33%; 
  height: 100%;
- background-image: url('https://i.pinimg.com/564x/b2/cc/6e/b2cc6ec9a2c1961d0c85a7706dd1a85d.jpg'); /* Specify right image URL */
+ background-image: url('https://i.pinimg.com/564x/b2/cc/6e/b2cc6ec9a2c1961d0c85a7706dd1a85d.jpg'); 
  background-size: cover;
 `;
 
@@ -73,7 +70,6 @@ const StyledForm = styled(Form)`
  display: flex;
  flex-direction: column;
  width: 280px; 
- margin: 120px auto 20px; /* Adjust margin to move form higher up */
  padding: 20px;
  border-radius: 10px;
 `;
@@ -81,7 +77,7 @@ const StyledForm = styled(Form)`
 
 const StyledLabel = styled.label`
  margin-bottom: 3px;
- font-size: 16px;
+ font-size: 18px;
  color: white;
  width: 80px;
  border-radius: 8px; /* Add border radius */
@@ -94,23 +90,31 @@ const StyledInput = styled(Field)`
  margin-bottom: 10px; /* Reduce margin */
  border: 1px solid #ccc;
  border-radius: 8px; /* Adjust border radius */
- font-size: 14px; /* Adjust font size */
- color: rgba(0, 0, 0, 0.7); /* Set text color with opacity */
- padding-left: 4px; /* Manually set padding to 40px */
+ font-size: 15px; /* Adjust font size */
+ padding-left: 3px; 
 `;
 
 const StyledButton = styled.button`
- padding: 10px 30px;
- background-color: #54D92f; 
- color: black;
- border: none;
- border-radius: 4px;
- cursor: pointer;
- &:disabled {
+  padding: 10px 30px;
+  background-color: #54952c; 
+  color: black;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 5px;
+  transition: background-color 0.2s ease; 
+  
+  &:disabled {
     background-color: #ccc;
     cursor: not-allowed;
- }
+  }
+
+  &:hover {
+    background-color: #549ddd; /* Change background color on hover */
+  }
 `;
+
 
 const Login = () => {
  // Call the useAuthentication hook 
@@ -132,7 +136,7 @@ const Login = () => {
       <LeftBackground />
       <MiddleBackground />
       <RightBackground />
-      <StyledHeader>Login</StyledHeader>
+      <StyledHeader>Chit Chat Login</StyledHeader>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
